@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Encoded Fault Lines – Map</title>
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <!-- 우리 스타일 -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="map-body">
+    <!-- 나중에 이 패널에 설명 넣거나 버튼 추가할 수 있음 -->
+    <div id="ui-panel">
+      <h1>Encoded Fault Lines</h1>
+      <p>Prototype network terrain map.<br />Click on the map to explore.</p>
+    </div>
+
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+
+    <!-- 우리 지도 스크립트 -->
+    <script src="main.js"></script>
+  </body>
+</html>

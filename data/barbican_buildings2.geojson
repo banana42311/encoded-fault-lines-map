@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Barbican Block A",
+        "avg_latency": 80
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-0.0985, 51.5200],
+          [-0.0975, 51.5200],
+          [-0.0975, 51.5206],
+          [-0.0985, 51.5206],
+          [-0.0985, 51.5200]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Barbican Block B",
+        "avg_latency": 40
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-0.0975, 51.5196],
+          [-0.0967, 51.5196],
+          [-0.0967, 51.5202],
+          [-0.0975, 51.5202],
+          [-0.0975, 51.5196]
+        ]]
+      }
+    }
+  ]
+}
