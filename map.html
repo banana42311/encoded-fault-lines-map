@@ -1,33 +1,56 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Encoded Fault Lines – Map</title>
-
-    <!-- Leaflet CSS -->
+    <title>Encoded Fault Lines – Network Map</title>
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     />
-
-    <!-- 우리 스타일 -->
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="map-body">
-    <!-- 나중에 이 패널에 설명 넣거나 버튼 추가할 수 있음 -->
-    <div id="ui-panel">
-      <h1>Encoded Fault Lines</h1>
-      <p>Prototype network terrain map.<br />Click on the map to explore.</p>
+  <body class="map-layout">
+    <div id="app">
+      <aside id="sidebar">
+        <h1>Encoded Fault Lines</h1>
+        <p class="subtitle">
+          A crowdsourced map of network accessibility in London.
+        </p>
+
+        <section class="panel">
+          <h2>About this map</h2>
+          <p>
+            Each building is coloured by the <strong>average latency</strong>
+            measured inside it. Pulsing points represent individual
+            measurements, where the animation encodes local instability
+            and packet loss.
+          </p>
+        </section>
+
+        <section class="panel">
+          <h2>How to contribute</h2>
+          <ol>
+            <li>Pan and zoom the map to your location.</li>
+            <li>Click on the map to add a measurement.</li>
+            <li>Enter the latency, jitter, and packet loss you observed.</li>
+          </ol>
+          <p>
+            As more values are added inside a building, its colour shifts to
+            reflect the collective measurements.
+          </p>
+        </section>
+
+        <!-- 나중에 여기 API latency 측정 UI/버튼 들어갈 예정 -->
+      </aside>
+
+      <main id="map-container">
+        <div id="map"></div>
+      </main>
     </div>
 
-    <div id="map"></div>
-
-    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
     <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
-
-    <!-- 우리 지도 스크립트 -->
     <script src="main.js"></script>
   </body>
 </html>
+

@@ -277,3 +277,41 @@ addMeasurementPoint({
   jitter: 30,
   packetLoss: 0.4,
 });
+
+// =======================
+// Latency 컬러 범례 (Legend)
+// =======================
+
+const legend = L.control({ position: "bottomright" });
+
+legend.onAdd = function (map) {
+  const div = L.DomUtil.create("div", "legend");
+  const grades = [0, 40, 80, 150];
+  const labels = [];
+
+  div.innerHTML += '<div class="legend-title">Average latency (ms)</div>';
+
+  for (let i = 0; i < grades.length; i++) {
+    const from = grades[i];
+    const to = grades[i + 1];
+
+    const color = latencyToColor(from === 0 ? 10 : from + 1);
+
+    labels.push(
+      `<div class="legend-item">
+         <span class="legend-color" style="background:${color}"></span>
+         <span class="legend-label">${
+           to
+             ? `${from}–${to} ms`
+             : `${from}+ ms`
+         }</span>
+       </div>`
+    );
+  }
+
+  div.innerHTML += labels.join("");
+  return div;
+};
+
+legend.addTo(map);
+
