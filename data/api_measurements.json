@@ -1,0 +1,268 @@
+[
+  {
+    "latitude": 51.5196,
+    "longitude": -0.09412,
+    "api_latency_ms": 133.0,
+    "api_stddev_ms": 24.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.519467,
+    "longitude": -0.093891,
+    "api_latency_ms": 126.0,
+    "api_stddev_ms": 14.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51949,
+    "longitude": -0.09342,
+    "api_latency_ms": 126.0,
+    "api_stddev_ms": 24.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51924,
+    "longitude": -0.09308,
+    "api_latency_ms": 161.0,
+    "api_stddev_ms": 52.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51885,
+    "longitude": -0.09292,
+    "api_latency_ms": 219.0,
+    "api_stddev_ms": 46.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51869,
+    "longitude": -0.09238,
+    "api_latency_ms": 212.0,
+    "api_stddev_ms": 56.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51907,
+    "longitude": -0.091927,
+    "api_latency_ms": 224.0,
+    "api_stddev_ms": 50.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51878,
+    "longitude": -0.09137,
+    "api_latency_ms": 175.0,
+    "api_stddev_ms": 92.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51898,
+    "longitude": -0.09139,
+    "api_latency_ms": 236.0,
+    "api_stddev_ms": 103.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51921,
+    "longitude": -0.09096,
+    "api_latency_ms": 207.0,
+    "api_stddev_ms": 21.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.5194,
+    "longitude": -0.09099,
+    "api_latency_ms": 199.0,
+    "api_stddev_ms": 40.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51947,
+    "longitude": -0.09141,
+    "api_latency_ms": 231.0,
+    "api_stddev_ms": 73.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51969,
+    "longitude": -0.09163,
+    "api_latency_ms": 217.0,
+    "api_stddev_ms": 57.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51992,
+    "longitude": -0.09323,
+    "api_latency_ms": 44.0,
+    "api_stddev_ms": 16.0,
+    "loss_pct": 32.0
+  },
+  {
+    "latitude": 51.52009,
+    "longitude": -0.09344,
+    "api_latency_ms": 36.0,
+    "api_stddev_ms": 3.0,
+    "loss_pct": 94.0
+  },
+  {
+    "latitude": 51.52015,
+    "longitude": -0.09401,
+    "api_latency_ms": 185.0,
+    "api_stddev_ms": 48.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.5191,
+    "longitude": -0.09294,
+    "api_latency_ms": 196.0,
+    "api_stddev_ms": 46.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51897,
+    "longitude": -0.09318,
+    "api_latency_ms": 216.0,
+    "api_stddev_ms": 60.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51872,
+    "longitude": -0.0943,
+    "api_latency_ms": 130.0,
+    "api_stddev_ms": 26.0,
+    "loss_pct": 42.0
+  },
+  {
+    "latitude": 51.51813,
+    "longitude": -0.09325,
+    "api_latency_ms": 194.0,
+    "api_stddev_ms": 38.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51843,
+    "longitude": -0.09493,
+    "api_latency_ms": 159.0,
+    "api_stddev_ms": 61.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.517471,
+    "longitude": -0.096999,
+    "api_latency_ms": 136.0,
+    "api_stddev_ms": 27.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51948,
+    "longitude": -0.09366,
+    "api_latency_ms": 34.0,
+    "api_stddev_ms": 4.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51959,
+    "longitude": -0.0936,
+    "api_latency_ms": 60.0,
+    "api_stddev_ms": 67.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51944,
+    "longitude": -0.09406,
+    "api_latency_ms": 58.0,
+    "api_stddev_ms": 42.0,
+    "loss_pct": 0.0
+  },
+  {
+    "latitude": 51.51871,
+    "longitude": -0.09261,
+    "api_latency_ms": 2909.0,
+    "api_stddev_ms": 287.0,
+    "loss_pct": 100.0
+  },
+  {
+    "latitude": 51.51883,
+    "longitude": -0.09266,
+    "api_latency_ms": 2522.0,
+    "api_stddev_ms": 867.0,
+    "loss_pct": 100.0
+  },
+  {
+    "latitude": 51.51864,
+    "longitude": -0.09196,
+    "api_latency_ms": 1982.0,
+    "api_stddev_ms": 840.0,
+    "loss_pct": 100.0
+  },
+  {
+    "latitude": 51.519028,
+    "longitude": -0.091651,
+    "api_latency_ms": 54.0,
+    "api_stddev_ms": 27.0,
+    "loss_pct": 100.0
+  },
+  {
+    "latitude": 51.519045,
+    "longitude": -0.091536,
+    "api_latency_ms": 76.0,
+    "api_stddev_ms": 45.0,
+    "loss_pct": 100.0
+  },
+  {
+    "latitude": 51.51937,
+    "longitude": -0.09068,
+    "api_latency_ms": 652.0,
+    "api_stddev_ms": 815.0,
+    "loss_pct": 100.0
+  },
+  {
+    "latitude": 51.51931,
+    "longitude": -0.091921,
+    "api_latency_ms": 3005.0,
+    "api_stddev_ms": 1.0,
+    "loss_pct": 100.0
+  },
+  {
+    "latitude": 51.519126,
+    "longitude": -0.091751,
+    "api_latency_ms": 3005.0,
+    "api_stddev_ms": 2.0,
+    "loss_pct": 100.0
+  },
+  {
+    "latitude": 51.519475,
+    "longitude": -0.09124,
+    "api_latency_ms": 3005.0,
+    "api_stddev_ms": 2.0,
+    "loss_pct": 100.0
+  },
+  {
+    "latitude": 51.51933,
+    "longitude": -0.09302,
+    "api_latency_ms": 3006.0,
+    "api_stddev_ms": 2.0,
+    "loss_pct": 100.0
+  },
+  {
+    "latitude": 51.51892,
+    "longitude": -0.09328,
+    "api_latency_ms": 910.0,
+    "api_stddev_ms": 1305.0,
+    "loss_pct": 100.0
+  },
+  {
+    "latitude": 51.52007,
+    "longitude": -0.0936,
+    "api_latency_ms": 1057.0,
+    "api_stddev_ms": 1353.0,
+    "loss_pct": 100.0
+  },
+  {
+    "latitude": 51.51894,
+    "longitude": -0.09383,
+    "api_latency_ms": 2675.0,
+    "api_stddev_ms": 530.0,
+    "loss_pct": 100.0
+  }
+]

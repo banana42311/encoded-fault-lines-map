@@ -11,10 +11,36 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: "&copy; OpenStreetMap contributors",
 }).addTo(map);
 
+
+
 // 애니메이션용 포인트 상태들을 저장할 배열
 const animatedPoints = [];
 const measurements = [];
 
+
+// (3) addMeasurementPoint 함수 정의  ← 반드시 필요! (API 데이터보다 위)
+function addMeasurementPoint(m) {
+  // 너의 기존 addMeasurementPoint 코드 전체가 여기 들어가면 됨
+  // 예: measurements.push(m);
+  //     애니메이션 포인트 생성
+}
+
+
+// (4) API latency 데이터 로드  ← addMeasurementPoint 아래로 이동해야 함!!
+fetch("data/api_measurements.json")
+  .then(res => res.json())
+  .then(rows => {
+    rows.forEach(row => {
+      addMeasurementPoint({
+        lat: row.latitude,
+        lng: row.longitude,
+        latency: row.api_latency_ms,
+        jitter: row.api_stddev_ms,
+        packetLoss: (row.loss_pct || 0) / 100,
+      });
+    });
+  })
+  .catch(err => console.error("Failed to load API measurements:", err));
 // =======================
 // 1. Latency → 색상 매핑
 // =======================
