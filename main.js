@@ -27,7 +27,7 @@ function addMeasurementPoint(m) {
 
 
 // (4) API latency 데이터 로드  ← addMeasurementPoint 아래로 이동해야 함!!
-fetch("data/api_measurements.json")
+fetch("data/api_measurements_buildings_full.json")
   .then(res => res.json())
   .then(rows => {
     rows.forEach(row => {
@@ -36,12 +36,17 @@ fetch("data/api_measurements.json")
         lng: row.longitude,
         latency: row.api_latency_ms,
         jitter: row.api_stddev_ms,
-        packetLoss: (row.loss_pct || 0) / 100,
+        packetLoss: (row.loss_pct || 0) / 100
       });
     });
+
+    // 만약 건물 평균 다시 계산하는 함수가 있다면 여기서 호출:
+    if (typeof recomputeBuildingStyles === "function") {
+      recomputeBuildingStyles();
+    }
   })
-  .catch(err => console.error("Failed to load API measurements:", err));
-// =======================
+  .catch(err => console.error("Failed to load full-building measurements:", err));
+
 // 1. Latency → 색상 매핑
 // =======================
 
