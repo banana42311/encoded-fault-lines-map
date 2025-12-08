@@ -313,13 +313,20 @@ fetch("data/barbican_buildings.geojson")
           fillOpacity: 0.7,
         };
       },
-      onEachFeature: (feature, layer) => {
-  const avg = feature.properties.avg_latency;
+onEachFeature: (feature, layer) => {
+  const p = feature.properties || {};
+  const avg =
+    typeof p.avg_latency === "number" ? p.avg_latency : null;
   const info = serviceBreakdown(avg);
+
+  const latencyText = avg !== null
+    ? `${avg.toFixed(1)} ms`
+    : "no data";
 
   layer.on("click", () => {
     layer.bindPopup(`
-      <strong>${info.label}</strong><br/><br/>
+      <strong>${info.label}</strong><br/>
+      <strong>Avg latency:</strong> ${latencyText}<br/><br/>
 
       <strong>⚠️ Potential Service Failures:</strong>
       <ul>
@@ -330,6 +337,7 @@ fetch("data/barbican_buildings.geojson")
     `).openPopup();
   });
 },
+
 }).addTo(map);
 
 
