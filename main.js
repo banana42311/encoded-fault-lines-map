@@ -1,6 +1,8 @@
 // =======================
 // 0. 기본 지도 세팅
 // =======================
+let faultLinesLayer = null;
+let faultsVisible = false;
 
 // 지도 생성 (런던 중심)
 const map = L.map("map").setView([51.5074, -0.1278], 12);
@@ -57,6 +59,38 @@ function latencyToColor(latency) {
   return "#d73027";                      // 빨강 - 매우 느림
 }
 
+function serviceBreakdown(latency) {
+  if (latency < 80) {
+    return {
+      label: "Stable Zone",
+      issues: ["All services function normally"],
+      warning: "This area shows healthy network accessibility."
+    };
+  }
+
+  if (latency < 150) {
+    return {
+      label: "Caution Zone",
+      issues: [
+        "Mobile tickets: occasional timeout",
+        "QR menus: delay likely"
+      ],
+      warning: "Moderate congestion in the digital layer."
+    };
+  }
+
+  return {
+    label: "Digital Fault Line",
+    issues: [
+      "QR-based menus: Unstable",
+      "Banking apps: 2FA delay",
+      "Transport API: frequent slowdowns",
+      "Verification services: timeout risk"
+    ],
+    warning: "This area sits on a digital access mismatch boundary."
+  };
+}
+
 
 // =======================
 // 2. 포인트 하나 추가하는 함수
@@ -76,6 +110,9 @@ function addMeasurementPoint(m) {
     fillOpacity: 0.9,
     weight: 1,
   }).addTo(map);
+
+
+
 
   // 애니메이션 상태 저장
   const state = {
@@ -252,13 +289,14 @@ function attachAvgLatencyToBuildings(geojson) {
 
 // =======================
 
+// 건물 GeoJSON 로드 + 색칠 + 경계 레이어 준비
 fetch("data/barbican_buildings.geojson")
   .then((response) => response.json())
   .then((geojson) => {
     // 1) 포인트 기반으로 avg_latency 계산해서 properties에 붙이기
     const enriched = attachAvgLatencyToBuildings(geojson);
 
-    // 2) avg_latency를 이용해서 색 칠하기
+    // 2) avg_latency를 이용해서 색 칠하기 (기존 건물 레이어)
     const buildingLayer = L.geoJSON(enriched, {
       style: (feature) => {
         const avgLatency = feature.properties?.avg_latency;
@@ -276,23 +314,56 @@ fetch("data/barbican_buildings.geojson")
         };
       },
       onEachFeature: (feature, layer) => {
-        const p = feature.properties || {};
-        layer.bindPopup(
-          `<strong>${p.name || "Building"}</strong><br/>
-           Avg latency: ${
-             typeof p.avg_latency === "number"
-               ? p.avg_latency.toFixed(1) + " ms"
-               : "no data"
-           }`
-        );
-      },
-    }).addTo(map);
+  const avg = feature.properties.avg_latency;
+  const info = serviceBreakdown(avg);
 
-    console.log("Building layer with avg_latency:", buildingLayer);
+  layer.on("click", () => {
+    layer.bindPopup(`
+      <strong>${info.label}</strong><br/><br/>
+
+      <strong>⚠️ Potential Service Failures:</strong>
+      <ul>
+        ${info.issues.map(i => `<li>${i}</li>`).join("")}
+      </ul>
+
+      <p><em>${info.warning}</em></p>
+    `).openPopup();
+  });
+},
+}).addTo(map);
+
+
+    // 3) 같은 데이터로 "경계 레이어"를 하나 더 만들어 두기 (처음엔 지도에 올리지 않음)
+faultLinesLayer = L.geoJSON(enriched, {
+  style: (feature) => {
+    const avg = feature.properties?.avg_latency;
+
+    // 측정값이 없거나, latency가 충분히 높지 않으면 경계 숨기기
+    if (typeof avg !== "number" || avg < 150) {
+      return {
+        color: "#000000",
+        weight: 0,
+        opacity: 0,
+        fillOpacity: 0,
+      };
+    }
+
+    // 문제 있는 건물만 "fault line"처럼 붉은 선으로 표시
+    return {
+      color: latencyToColor(avg), // 혹은 "#ff5050" 고정도 가능
+      weight: 3,
+      opacity: 0.9,
+      fillOpacity: 0,
+      dashArray: "4 6", // 균열 같은 느낌
+    };
+  },
+});
+
   })
   .catch((err) => {
     console.error("Failed to load Barbican buildings GeoJSON:", err);
   });
+
 addMeasurementPoint({
   lat: 51.5202,
   lng: -0.0978,
@@ -345,4 +416,23 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(map);
+
+
+const toggleBtn = document.getElementById("toggle-faultlines");
+
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+    if (!faultLinesLayer) return; // 아직 안 만들어졌으면 무시
+
+    if (!faultsVisible) {
+      faultLinesLayer.addTo(map);
+      toggleBtn.textContent = "Hide Boundaries";
+    } else {
+      map.removeLayer(faultLinesLayer);
+      toggleBtn.textContent = "Reveal Boundaries";
+    }
+
+    faultsVisible = !faultsVisible;
+  });
+}
 
